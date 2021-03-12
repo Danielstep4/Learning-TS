@@ -60,7 +60,8 @@ onChange(people)
 // Handling Submit
 const form = app.querySelector('form')! as HTMLFormElement;
 let handleDrag: (e: Event) => void = e => {
-    console.log(e)
+    //#TODO
+    return;
 }
 const handleSubmit = (e: Event): void | undefined => {
     e.preventDefault();

@@ -60,7 +60,8 @@
     // Handling Submit
     const form = app.querySelector('form');
     let handleDrag = e => {
-        console.log(e);
+        //#TODO
+        return;
     };
     const handleSubmit = (e) => {
         e.preventDefault();

@@ -28,6 +28,9 @@ const checkInputs = (title, description, people) => {
     };
 };
 const flash = (msg, element, time = 2500) => {
+    const CheckFlashMsg = document.querySelector('.flash-msg');
+    if (CheckFlashMsg)
+        return;
     const flashMessage = document.createElement('span');
     flashMessage.innerText = msg;
     flashMessage.classList.add('flash-msg');

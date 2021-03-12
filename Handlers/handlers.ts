@@ -24,8 +24,9 @@ const checkInputs = (title: string, description: string, people: number): CheckI
         msg
     }
 }
-
 const flash = (msg: string, element: HTMLElement, time: number=2500): void => {
+    const CheckFlashMsg = document.querySelector('.flash-msg') as HTMLSpanElement
+    if(CheckFlashMsg) return;
     const flashMessage: HTMLSpanElement = document.createElement('span');
     flashMessage.innerText = msg
     flashMessage.classList.add('flash-msg')
