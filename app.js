@@ -19,8 +19,7 @@
     //Add functionality to form
     // changing the second list to be finished list.
     const addListTitle = (element, title) => {
-        var _a;
-        const titleElement = (_a = element.querySelector('header')) === null || _a === void 0 ? void 0 : _a.querySelector('h2');
+        const titleElement = element.querySelector('header')?.querySelector('h2');
         titleElement.innerText = title;
     };
     const activeList = app.querySelector('.projects');
@@ -65,6 +64,9 @@
     };
     const handleSubmit = (e) => {
         e.preventDefault();
+        const { valid, msg } = checkInputs(titleInput, descInput, peopleInput);
+        if (!valid)
+            return flash(msg, form);
         //Creating an element
         const projectDiv = document.createElement('div');
         // Creating the project html
@@ -82,6 +84,9 @@
         li.addEventListener('drag', handleDrag);
         appendNode(projectNode, activeListUL);
         form.reset();
+        titleInput = '';
+        descInput = '';
+        peopleInput = 0;
     };
     form.addEventListener('submit', handleSubmit);
 })();

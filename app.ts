@@ -1,3 +1,4 @@
+
 (function() {
 // App root where i render all the html
 const app = document.getElementById('app')! as HTMLDivElement;
@@ -61,8 +62,10 @@ const form = app.querySelector('form')! as HTMLFormElement;
 let handleDrag: (e: Event) => void = e => {
     console.log(e)
 }
-const handleSubmit = (e: Event): void => {
+const handleSubmit = (e: Event): void | undefined => {
     e.preventDefault();
+    const { valid , msg } = checkInputs(titleInput, descInput, peopleInput)
+    if(!valid) return flash(msg, form);
     //Creating an element
     const projectDiv = document.createElement('div');
     // Creating the project html
@@ -80,6 +83,9 @@ const handleSubmit = (e: Event): void => {
     li.addEventListener('drag', handleDrag)
     appendNode(projectNode, activeListUL)
     form.reset()
+    titleInput = '';
+    descInput = '';
+    peopleInput = 0;
 }
 form.addEventListener('submit', handleSubmit)
 })()

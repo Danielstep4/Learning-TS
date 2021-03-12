@@ -125,3 +125,10 @@ button:active {
   border: 1px solid #ff0062;
   background: #f7f7f7;
 }
+.flash-msg {
+  padding: 0.6rem;
+  color: white;
+  background-color: rgba(255, 82, 82, 1);
+  border-radius: 0.5rem;
+  font-weight: 700;
+}
