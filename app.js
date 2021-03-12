@@ -19,7 +19,7 @@
     //Add functionality to form
     // changing the second list to be finished list.
     const addListTitle = (element, title) => {
-        const titleElement = element.querySelector('header')?.querySelector('h2');
+        const titleElement = element.querySelector('header').querySelector('h2');
         titleElement.innerText = title;
     };
     const activeList = app.querySelector('.projects');

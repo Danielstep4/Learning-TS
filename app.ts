@@ -1,4 +1,3 @@
-
 (function() {
 // App root where i render all the html
 const app = document.getElementById('app')! as HTMLDivElement;
@@ -19,7 +18,7 @@ appendNode(finishedListNode);
 //Add functionality to form
 // changing the second list to be finished list.
 const addListTitle = (element: HTMLTableSectionElement, title: string) => {
-    const titleElement: HTMLElement = element.querySelector('header')?.querySelector('h2')!;
+    const titleElement: HTMLElement = element.querySelector('header')!.querySelector('h2')!;
     titleElement.innerText = title
 }
 const activeList = app.querySelector('.projects')! as HTMLTableSectionElement;

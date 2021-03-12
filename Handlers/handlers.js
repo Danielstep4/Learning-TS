@@ -2,6 +2,7 @@
 const checkInputs = (title, description, people) => {
     let valid = false;
     let msg = '';
+    console.log(people);
     // Checking if user filled the inputs.
     if (!title && !description && !people)
         msg = 'Please fill all the inputs.';
@@ -14,8 +15,6 @@ const checkInputs = (title, description, people) => {
     // Checking if people is a positive integer, and max number of people is 10.
     else if (people > 10)
         msg = 'Max people on a project is 10.';
-    else if (people < 0)
-        msg = 'People Can\'t be a negative number.';
     // Checking if description is more than 10 chars.
     else if (description.trim().length < 10)
         msg = 'Please make sure the description is at least 10 chars long.';
