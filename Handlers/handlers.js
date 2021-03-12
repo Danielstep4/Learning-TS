@@ -38,3 +38,16 @@ const flash = (msg, element, time = 2500) => {
         flashMessage.remove();
     }, time);
 };
+const dragHelper = (from, to) => {
+    const allowDrop = (e) => e.preventDefault();
+    const drop = (e) => {
+        e.preventDefault();
+        const data = e.dataTransfer?.getData('Text');
+        const dropElement = e.target;
+        dropElement.appendChild(document.getElementById(data));
+    };
+    from.ondragover = allowDrop;
+    to.ondragover = allowDrop;
+    from.ondrop = drop;
+    to.ondrop = drop;
+};

@@ -58,9 +58,15 @@ const people = app.querySelector('#people')! as HTMLInputElement
 onChange(people)
 // Handling Submit
 const form = app.querySelector('form')! as HTMLFormElement;
-let handleDrag: (e: Event) => void = e => {
+let handleDrag: (e: DragEvent) => void = e => {
     //#TODO
-    return;
+    const element = e.target as HTMLElement
+    e.dataTransfer?.setData('Text', element.id)
+    const startElement: HTMLTableSectionElement = element.parentElement!.parentElement! as HTMLTableSectionElement
+    const endElement = (startElement.nextElementSibling || startElement.previousElementSibling)! as HTMLTableSectionElement;
+    const startList: HTMLUListElement = startElement.querySelector('ul')! 
+    const endList: HTMLUListElement = endElement.querySelector('ul')!
+    dragHelper(startList, endList);
 }
 const handleSubmit = (e: Event): void | undefined => {
     e.preventDefault();
@@ -80,7 +86,7 @@ const handleSubmit = (e: Event): void | undefined => {
     const activeListUL = activeList.querySelector('ul')! as HTMLUListElement;
     const li = projectNode.childNodes[1] as HTMLLIElement;
     li.appendChild(projectDiv)
-    li.addEventListener('drag', handleDrag)
+    li.addEventListener('dragstart', handleDrag)
     appendNode(projectNode, activeListUL)
     form.reset()
     titleInput = '';

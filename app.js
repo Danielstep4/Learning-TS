@@ -61,7 +61,13 @@
     const form = app.querySelector('form');
     let handleDrag = e => {
         //#TODO
-        return;
+        const element = e.target;
+        e.dataTransfer?.setData('Text', element.id);
+        const startElement = element.parentElement.parentElement;
+        const endElement = (startElement.nextElementSibling || startElement.previousElementSibling);
+        const startList = startElement.querySelector('ul');
+        const endList = endElement.querySelector('ul');
+        dragHelper(startList, endList);
     };
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -82,7 +88,7 @@
         const activeListUL = activeList.querySelector('ul');
         const li = projectNode.childNodes[1];
         li.appendChild(projectDiv);
-        li.addEventListener('drag', handleDrag);
+        li.addEventListener('dragstart', handleDrag);
         appendNode(projectNode, activeListUL);
         form.reset();
         titleInput = '';

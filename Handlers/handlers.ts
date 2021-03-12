@@ -36,3 +36,16 @@ const flash = (msg: string, element: HTMLElement, time: number=2500): void => {
     }, time)
 }
 
+const dragHelper = (from: HTMLElement, to: HTMLElement) => {
+    const allowDrop = (e: DragEvent) => e.preventDefault()
+    const drop = (e: DragEvent) => {
+        e.preventDefault();
+        const data = e.dataTransfer?.getData('Text')!;
+        const dropElement = e.target! as HTMLElement;
+        dropElement.appendChild(document.getElementById(data)! as HTMLElement);
+    }
+    from.ondragover = allowDrop
+    to.ondragover = allowDrop
+    from.ondrop = drop
+    to.ondrop = drop
+}
